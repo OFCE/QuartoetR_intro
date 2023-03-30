@@ -1,0 +1,233 @@
+---
+title: "Introduction rapide à R et Quarto"
+author:
+  - name: "Anissa Saumtally"
+    email: "GitHub repo"
+    affiliation: OFCE, Sciences Po Paris
+lang: fr
+date: 3/30/2023
+date-format: "dddd D MMMM YYYY"
+logo: www/ofce.png
+footer:
+  "Rappels R et Quarto"
+format:
+  revealjs:
+    #slide-level: 2
+    slide-number: c/t
+    center: false
+    navigation-mode: linear
+    theme: [simple, www/presentation.scss]
+    code-fold: true
+transition: slide
+transition-speed: fast
+auto-stretch: true
+execute: 
+  echo: false
+  warning: false
+  eval: true
+---
+
+# Objectifs de la session 
+
+- Comprendre l'organisation d'un projet sous R (avec GitHub en bonus)
+
+- Pouvoir créer (ou ouvrir) un script Quarto sous R avec du code et du texte et le compiler en html
+
+## Au menu aujourd'hui
+
+- Vérifier les installations des logiciels et packages nécessaires
+
+- Présentation de l'interface RStudio
+
+  + Prise en main de l'interface
+  + Travailler en Rproj
+  + Travailler avec GitHub
+
+- Présentation de Quarto
+
+  + Anatomie d'un fichier quarto (.qmd)
+  + Création d'un document basique avec du code et du texte
+  + Quelques options à connaître
+  + Compilation
+
+# Installations nécessaires
+
+## Les logiciels 
+
+- R (au moins 4.2.1) 
+  + R est la machine qui fait tourner le code
+  + <https://cran.rstudio.com>
+  
+- RStudio 
+
+  + C'est l'interface utilisateur qui permet de travailler sur la machine R de manière plus ergonomique 
+  + <https://posit.co/download/rstudio-desktop/>
+  
+- Quarto
+
+  + Le logiciel qui permet d'avoir les fonctionnalités quarto dans RStudio
+  + Installer la dernière version pour bénéficier de toutes les fonctionnalités
+  + <https://quarto.org/docs/get-started/>
+
+- GitHub Desktop
+  + Pour pouvoir travailler en Git plus facilement
+  + <https://desktop.github.com>
+  
+- Pour générer des pdf : une distribution de $\LaTeX$
+
+  + Nécessaire pour compiler des documents Rmarkdown ou Quarto en pdf (attention l'installation peut mettre un peu de temps en fonction de la distribution installée)
+
+## Les packages R
+
+Au minimum: 
+
+- tidyverse 
+
+- quarto
+
+- rmarkdown
+
+- ofce (pas sur le CRAN, installation via GitHub)
+
+```{r}
+#| eval: false
+#| echo: true
+
+install.packages(c("tidyverse", "quarto", "rmarkdown"))
+devtools::install_github("OFCE/ofce")
+
+# Pour LaTex rapide
+tinytex::install_tinytex()
+
+```
+
+# RStudio : guide de démarrage rapide
+
+## L'interface RStudio
+![interface](pictures/RStudio.png)
+
+## Le  Rproject 
+
+**Qu'est-ce qu'un Rproject?**
+
+Il s'agit d'un dossier avec tout le contenu 
+
+**Pourquoi travailler en RProjet ?**
+
+- Plus de chemins absolus : toutes les dépendances sont dans le dossier
+
+- Cela facilite le partage 
+
+- Organisation propre 
+
+
+## Créer un Project
+
+- Fichier/Nouveau projet (File/ New project)
+ +  cliquer 
+
+## Ouvrir un RProject existant
+
+- Aller dans le navigateur et cliquer sur .Rproj
+
+## Travailler avec Git  : Mettre son projet existant sur GitHub: version rapide via GitHub Desktop
+
+- Fermer RStudio
+
+- Créer un nouveau *repository* via GitHub desktop
+
+- Déplacer le contenu de votre RProject dans le dossier qui sert de *repository* créé par GitHub Desktop 
+  + Supprimer l'ancien dossier
+
+- Faire un commit puis push pour publier (ou juste mettre en ligne) votre repository 
+
+- Réouvrir le projet en cliquant sur le .Rproj du dossier  
+
+## Créer un répository
+
+![git_create](pictures/Git.png)
+
+## Récupérer un projet existant sur GitHub (en live)
+
+- Aller sur la page git pour récupérer le lien qui se finit en .git 
+
+
+# Quarto
+
+## Keskecé ?
+
+- Quarto est un format de script qui permet d'intégrer du code R dans un document 
+- L'extension de ce type de fichier est le *.qmd*
+
+- On peut générer à partir d'un même script des fichiers format html sous forme de:
+
+  + pages web simple (un document html)
+  + sites web complet <https://xtimbeau.github.io/meaps/> 
+  + des présentations (revealjs ou beamer)
+  + un document pdf 
+
+- Pourquoi l'utiliser? 
+
+  + Format pensé pour la publication
+  + Cela permet de rassembler le travail de fond (traitement des données, économétrie, graphiques) et la forme (le texte et le formattage)
+  + Permet de faire des documents complets avec un script (tout est dans un seul endroit)
+  + Contenu dynamique et toujours à jour
+  + Utilisation avec Git optimisée (travail en collaboration simplifié)
+  + Des rendus beaux et modernes avec la possibilité d'utiliser des templates communs à tous
+  + On peut intégrer du code $\LaTeX$
+  + Fonctionalités avancées de R (shiny, plotly)
+  + Publiables facilement car html
+  
+
+## Création d'un fichier .qmd
+
+- Si tout est bien installé :
+
+  + Cliquer sur `File/New File/Quarto Document` pour un document ou `File/New File/Quarto Presentation` pour une présentation type Revealjs (comme la présentation actuelle) ou beamer (si vous souhaitez un pdf, mais bon en vrai, à la fin de la présentation vous en voudrez pas.)
+  
+  + ... et c'est tout... (enfin presque..)
+  
+## Anatomie d'un document quarto
+
+*Trois sections*
+
+- le *YAML* : on y renseigne les paramètres du document (Titre, Auteurs, Date mais aussi format de sortie et options pour celle-ci)
+  + Le YAML est très sensible et capricieux, attention quand on le modifie !
+
+- le corps du texte pour y écrire: 
+  + du texte mais aussi des équations, inclure des images externes à R etc.. 
+  + La syntaxe d'écriture est en markdown, ce qui permet de formatter le texte (gras, italique, lien hypertexte, bullet points) mais aussi et surtout de structurer le texte avec des sections et sous-section.
+  + inclure des appels rapides au code R (**inline**) : pour par exemple avoir toujours le bon chiffre dans une phrase 
+  + Voir la cheatsheet RMarkdown `Help/Cheat Sheets/ R Markdown Cheat Sheet`
+
+- des *chunks R* : Ce sont dans ces morceaux du script qu'on va mettre le code R.   
+  + Les morceaux peuvent être éparpillés dans le texte, mais ils lus comme un seul script
+  + S'écrit comme si on était sur un script R 
+  + Les chunks peuvent avoir des étiquettes (labels) pour mieux se repérer dans le document ainsi que d'autres options (notés par `#|` ) 
+
+
+
+## Le quarto type
+
+![interface](pictures/RStudio.png)
+
+## Création d'un document quarto (en live)
+
+- Live demo
+
+## Quelques option de chunk à connaître
+
+
+- `#| label: Graphique PIB # pour signaler que ce chunk sert à générer le graphique du PIB`
+- `#| eval: false # si false cette partie du code ne tournera pas et sera ignorée quand on compilera le document`
+- `#| echo: true # si false cette partie du code ne s'affichera pas dans le document final`
+- `#| warning: false  #si false, les warning de R dus à des erreurs de code dans cette partie de s'afficheront pas`
+- `#| fig-width: 6.5 # détermine la largeur du graphique généré par cette partie du code qui s'affichera en sortie`
+- `#| fig-height: 4 # détermine la hauteur du graphique généré par cette partie du code qui s'affichera en sortie`
+
+
+
+## Compilation 
+
+- Pour visualer le rendu du document : cliquer sur `render` ou  `ctrl` + `shift` + `k` 
+  + Cela sauvegarde automatiquement le .qmd

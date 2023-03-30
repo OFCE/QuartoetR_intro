@@ -1,0 +1,55 @@
+---
+title: "Mon Quarto"
+author: "Moi"
+format: 
+  html:
+    code-fold: true
+  revealjs:
+    #slide-level: 2
+    slide-number: c/t
+    center: false
+    navigation-mode: linear
+    theme: [simple, www/presentation.scss]
+    code-fold: true
+---
+
+
+```{r}
+#| label: setup
+#| echo: false
+#| message: false
+
+library(ofce)
+library(tidyverse)
+
+donnees <- read.csv("donneesCRE.csv") %>% 
+  pivot_longer(cols= c("avec_bt","sans_bt")) %>% 
+  mutate(date= as.Date(date))
+```
+
+
+# Les données de la CRE
+
+## What is it?
+
+Les données de la CRE avec sans application du bouclier tarifaire tel que vu sur
+<https://www.cre.fr/Actualites/publication-des-baremes-applicables-pour-les-tarifs-reglementes-de-vente-de-gaz-naturel-d-engie-avril-2023>
+
+##  Le graphique 
+Voici une réédition du graphique de la CRE :
+
+```{r}
+#| label: graphique
+#| echo: true
+
+ggplot(donnees, aes(x= date,y = value, group = name)) +
+  geom_line(aes(linetype= name)) +
+  scale_x_date(breaks = "3 month" , date_labels = "%m/%y")+
+  theme_ofce(base_family = "Arial") +
+  theme(legend.position = "bottom", 
+        legend.title = element_blank() ) 
+  
+
+```
+
+
