@@ -110,25 +110,37 @@ tinytex::install_tinytex()
 
 **Qu'est-ce qu'un Rproject?**
 
-Il s'agit d'un dossier avec tout le contenu 
+Il s'agit d'un dossier avec tout le contenu nécessaire pour la réalisation d'un travail sous R.
 
 **Pourquoi travailler en RProjet ?**
 
-- Plus de chemins absolus : toutes les dépendances sont dans le dossier
-
-- Cela facilite le partage 
-
-- Organisation propre 
+- Organisation propre : 
++ toutes les dépendances (bases de données, scripts) sont dans le dossier 
++ pas de problème de chemins absolus)
++ Plus de problèmes pour le partage
++ integration git simple
++ sauvegarde de l'environnement de travail avec les fenêtres ouvertes etc..
 
 
 ## Créer un Project
 
-- Fichier/Nouveau projet (File/ New project)
- +  cliquer 
+- Cliquer sur fichier/Nouveau projet (File/ New project)
+![](pictures/newproject1.png)
+
+- puis cliquer sur 
+
+![](pictures/newproject2.png)
+
+- et suivre les indications
+
+- un nouveau dossier est créé à l'emplacement choisi : il devient votre répertoire de travail par défault pour ce projet
 
 ## Ouvrir un RProject existant
 
-- Aller dans le navigateur et cliquer sur .Rproj
+- Aller dans l'explorateur et cliquer sur le fichier qui se termine par.Rproj
+
+![](pictures/repertoire de travail.png)
+
 
 ## Travailler avec Git  : Mettre son projet existant sur GitHub: version rapide via GitHub Desktop
 
@@ -147,9 +159,14 @@ Il s'agit d'un dossier avec tout le contenu
 
 ![git_create](pictures/Git.png)
 
-## Récupérer un projet existant sur GitHub (en live)
+## Récupérer un projet existant sur GitHub 
 
-- Aller sur la page git pour récupérer le lien qui se finit en .git 
+- Aller sur la page git pour cloner rapidement le repository
+
++ <https://github.com/OFCE/QuartoetR_intro>
+
+![](pictures/github clone.png){}
+- Suivre les instructions dans GitHub desktop 
 
 
 # Quarto
@@ -187,6 +204,10 @@ Il s'agit d'un dossier avec tout le contenu
   
   + ... et c'est tout... (enfin presque..)
   
+![](pictures/newquarto.png)
+  
+![](pictures/newquarto short.png)  
+
 ## Anatomie d'un document quarto
 
 *Trois sections*
@@ -209,11 +230,15 @@ Il s'agit d'un dossier avec tout le contenu
 
 ## Le quarto type
 
-![interface](pictures/RStudio.png)
+![quarto](pictures/QuartoBasic.png)
 
 ## Création d'un document quarto (en live)
 
 - Live demo
+- Voir aussi exemples dans le dossier :
+
+  + `monquarto.qmd`
+  + `ofcn_files/PolicyBrief.qmd`
 
 ## Quelques option de chunk à connaître
 
@@ -231,3 +256,5 @@ Il s'agit d'un dossier avec tout le contenu
 
 - Pour visualer le rendu du document : cliquer sur `render` ou  `ctrl` + `shift` + `k` 
   + Cela sauvegarde automatiquement le .qmd
+  + un fichier .html portant le nom indiqué est généré
+  +.. et c'est tout...

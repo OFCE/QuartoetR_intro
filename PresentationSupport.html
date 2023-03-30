@@ -483,7 +483,7 @@ Anissa Saumtally
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"quarto"</span>, <span class="st">"rmarkdown"</span>))</span>
-<span id="cb1-2"><a href="#cb1-2"></a>remotes<span class="sc">::</span><span class="fu">install.packages</span>(<span class="st">"ofce"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"OFCE/ofce"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="co"># Pour LaTex rapide</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -502,27 +502,36 @@ Anissa Saumtally
 <section id="le-rproject" class="slide level2">
 <h2>Le Rproject</h2>
 <p><strong>Qu’est-ce qu’un Rproject?</strong></p>
-<p>Il s’agit d’un dossier avec tout le contenu</p>
+<p>Il s’agit d’un dossier avec tout le contenu nécessaire pour la réalisation d’un travail sous R.</p>
 <p><strong>Pourquoi travailler en RProjet ?</strong></p>
 <ul>
-<li><p>Plus de chemins absolus : toutes les dépendances sont dans le dossier</p></li>
-<li><p>Cela facilite le partage</p></li>
-<li><p>Organisation propre</p></li>
+<li>Organisation propre :</li>
+<li>toutes les dépendances (bases de données, scripts) sont dans le dossier</li>
+<li>pas de problème de chemins absolus)</li>
+<li>Plus de problèmes pour le partage</li>
+<li>integration git simple</li>
+<li>sauvegarde de l’environnement de travail avec les fenêtres ouvertes etc..</li>
 </ul>
 </section>
 <section id="créer-un-project" class="slide level2">
 <h2>Créer un Project</h2>
 <ul>
-<li>Fichier/Nouveau projet (File/ New project)</li>
-<li>cliquer</li>
+<li><p>Cliquer sur fichier/Nouveau projet (File/ New project) <img data-src="pictures/newproject1.png"></p></li>
+<li><p>puis cliquer sur</p></li>
+</ul>
+<p><img data-src="pictures/newproject2.png"></p>
+<ul>
+<li><p>et suivre les indications</p></li>
+<li><p>un nouveau dossier est créé à l’emplacement choisi : il devient votre répertoire de travail par défault pour ce projet</p></li>
 </ul>
 </section>
 <section id="ouvrir-un-rproject-existant" class="slide level2">
 <h2>Ouvrir un RProject existant</h2>
 <ul>
-<li>Aller dans le navigateur et cliquer sur .Rproj</li>
+<li>Aller dans l’explorateur et cliquer sur le fichier qui se termine par.Rproj</li>
 </ul>
-</section>
+
+<img data-src="pictures/repertoire%20de%20travail.png" class="r-stretch"></section>
 <section id="travailler-avec-git-mettre-son-projet-existant-sur-github-version-rapide-via-github-desktop" class="slide level2">
 <h2>Travailler avec Git : Mettre son projet existant sur GitHub: version rapide via GitHub Desktop</h2>
 <ul>
@@ -540,8 +549,13 @@ Anissa Saumtally
 <h2>Créer un répository</h2>
 
 <img data-src="pictures/Git.png" class="r-stretch quarto-figure-center"><p class="caption">git_create</p></section>
-<section id="récupérer-un-projet-existant-sur-github-rappel" class="slide level2">
-<h2>Récupérer un projet existant sur GitHub (Rappel)</h2>
+<section id="récupérer-un-projet-existant-sur-github" class="slide level2">
+<h2>Récupérer un projet existant sur GitHub</h2>
+<ul>
+<li><p>Aller sur la page git pour cloner rapidement le repository</p></li>
+<li><p><a href="https://github.com/OFCE/QuartoetR_intro" class="uri">https://github.com/OFCE/QuartoetR_intro</a></p></li>
+</ul>
+<p><img data-src="pictures/github%20clone.png"> - Suivre les instructions dans GitHub desktop</p>
 </section></section>
 <section>
 <section id="quarto" class="title-slide slide level1 center">
@@ -583,6 +597,8 @@ Anissa Saumtally
 <li><p>… et c’est tout… (enfin presque..)</p></li>
 </ul></li>
 </ul>
+<p><img data-src="pictures/newquarto.png"></p>
+<p><img data-src="pictures/newquarto%20short.png"></p>
 </section>
 <section id="anatomie-dun-document-quarto" class="slide level2">
 <h2>Anatomie d’un document quarto</h2>
@@ -610,11 +626,16 @@ Anissa Saumtally
 <section id="le-quarto-type" class="slide level2">
 <h2>Le quarto type</h2>
 
-<img data-src="pictures/RStudio.png" class="r-stretch quarto-figure-center"><p class="caption">interface</p></section>
+<img data-src="pictures/QuartoBasic.png" class="r-stretch quarto-figure-center"><p class="caption">quarto</p></section>
 <section id="création-dun-document-quarto-en-live" class="slide level2">
 <h2>Création d’un document quarto (en live)</h2>
 <ul>
-<li>Live demo</li>
+<li><p>Live demo</p></li>
+<li><p>Voir aussi exemples dans le dossier :</p>
+<ul>
+<li><code>monquarto.qmd</code></li>
+<li><code>ofcn_files/PolicyBrief.qmd</code></li>
+</ul></li>
 </ul>
 </section>
 <section id="quelques-option-de-chunk-à-connaître" class="slide level2">
@@ -634,6 +655,7 @@ Anissa Saumtally
 <li>Pour visualer le rendu du document : cliquer sur <code>render</code> ou <code>ctrl</code> + <code>shift</code> + <code>k</code>
 <ul>
 <li>Cela sauvegarde automatiquement le .qmd</li>
+<li>un fichier .html portant le nom indiqué est généré +.. et c’est tout…</li>
 </ul></li>
 </ul>
 
